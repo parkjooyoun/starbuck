@@ -567,7 +567,7 @@ header .mega-menu .texture .caption p {
     position: relative;
     left: 50%;
     margin-left: -960px;
-    /*display: none;*/
+    display: none;
 }
 .promotion .slider {
     width: 1920px;
@@ -578,6 +578,10 @@ header .mega-menu .texture .caption p {
 }
 .promotion .slider ul li{
     position: relative;
+    opacity: .5;
+}
+.promotion .slider ul li.active {
+    opacity: 1;
 }
 .promotion .slider ul li .btn{
     position: absolute;
