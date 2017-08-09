@@ -28,6 +28,7 @@
         toggleTopCard();
         megaMenuHandler();
         searchHandler();
+        sliderHandler()
     }
 
     function toggleTopCard() {
@@ -163,6 +164,25 @@
         $('.visual .fade-in').each(function (index) {
             TweenMax.to(this, 1, { opacity: 1, delay: (index+ 1) * .7})
         // TweenMax.to($(this), 1m {}); 로도 사용가능
+        });
+    }
+
+    function sliderHandler() {
+        $('.notice-line .slider ul').bxSlider({
+            mode: 'vertical',
+            pager: false,
+            controls: false,
+            auto: true,
+            pause: 5000
+        });
+
+        $('.promotion .slider ul').bxSlider({
+            auto:true,
+            minSlides: 1,
+            maxSlides: 3,
+            moveSlides: 1,
+            slideWidth: 819,
+            slideMargin: 10
         });
     }
 
