@@ -818,7 +818,7 @@ header .mega-menu .texture .caption p {
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 0 auto;
+    margin: auto;
     perspective: 600px;
     /*css속성에서 새로나온 아이입니당*/
 }

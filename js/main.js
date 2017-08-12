@@ -396,11 +396,11 @@
         }
     }
 
-    function showToTOP() {
+    function showToTop() {
         $('#to-top').stop(false, true).fadeIn(400);
     }
     function hideToTop() {
-        $('#to-top').stop(false, true).fadeIn(400);
+        $('#to-top').stop(false, true).fadeOut(400);
     }
 
 }(jQuery));
