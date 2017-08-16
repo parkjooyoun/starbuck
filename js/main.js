@@ -38,6 +38,7 @@
         checkSectionOffsetTop();
         setReturnToPosition();
         toTopHandler();
+        pluginNiceScroll();
     }
 
     function toggleTopCard() {
@@ -193,11 +194,11 @@
             pager: true,
             controls: false,
             autoControls: true,
-            pagerSelector:'.promotion .pager',
-            autoControlsSelector:'.promotion .auto-controls',
+            pagerSelector: '.promotion .pager',
+            autoControlsSelector: '.promotion .auto-controls',
             autoControlsCombine: true,
-            startText:'',
-            stopText:'',
+            startText: '',
+            stopText: '',
             auto: true,
             pause: 5000,
             minSlides: 1,
@@ -224,6 +225,29 @@
             _sb.promotionSlider.goToNextSlide();
             _sb.promotionSlider.stopAuto();
         });
+
+        _sb.awardSlider = $('.award .slider ul').bxSlider({
+            pager: false,
+            controls: false,
+            auto: true,
+            pause: 3000,
+            minSlides: 5,
+            maxSlides: 5,
+            moveSlides: 1,
+            slideWidth: 192,
+            slideMargin: 35
+        });
+
+        $('.award .prv').on('click', function () {
+            _sb.awardSlider.goToPrevSlide();
+            _sb.awardSlider.stopAuto();
+            restartAwardSlider();
+        });
+        $('.award .next').on('click', function () {
+            _sb.awardSlider.goToNextSlide();
+            _sb.awardSlider.stopAuto();
+            restartAwardSlider();
+        });
     }
 
 
@@ -240,7 +264,9 @@
     function openPromotion() {
         _sb.$promotion
             .stop()
-            .slideDown(400)
+            .slideDown(400, function () {
+                $('html').getNiceScroll().resize();
+            })
             .data({
                 opened: 'opened'
             });
@@ -270,6 +296,12 @@
         });
     }
 
+    function restartAwardSlider() {
+        setTimeout(function () {
+            _sb.awardSlider.startAuto();
+        }, 4000);
+    }
+    
     function pauseTogglePromotionBtn() {
         tweenMax.set(_sb.$togglePromotionBtn, { scale: 1 });
         tweenMax.set(_sb.$togglePromotionBtn, .5, { rotation: -180 });
@@ -401,6 +433,16 @@
     }
     function hideToTop() {
         $('#to-top').stop(false, true).fadeOut(400);
+    }
+
+    function pluginNiceScroll() {
+        $('html').niceScroll({
+            cursorcolor: 'rgba(0,0,0,.7)',
+            cursorwidth: 10,
+            cursorborder: 'none',
+            cursorborderradius: 0,
+            zindex: 9999
+        });
     }
 
 }(jQuery));
